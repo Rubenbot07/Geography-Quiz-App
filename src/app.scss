@@ -5,6 +5,7 @@ $correct-answer-color: #3E9FFF;
 $incorrect-answer-color: #DD524C;
 $gray-color: #8B8EAB;
 $congrats-color: #FFECC8;
+$gradient: linear-gradient(#E65895, #BC6BE8);
 
 * {
     margin: 0;
@@ -25,14 +26,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    gap: 1rem;
+    padding: 2rem 1rem;
     border-radius: 14px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 85vw;
-    height: 80%;
+    max-width: 900px;
+    height: auto;
     background-color: $primary-color;
     h1 {
         color: $gray-color;
@@ -41,6 +44,22 @@ body {
             weight: semibold;
         }
     }
+    .question {
+        color: $font-color;
+        text-align: center;
+        max-width: 500px;
+        font: {
+            size: 1.25rem;
+            weight: 600;
+        };
+    }
+}
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
 }
 
 .question-list-container {
@@ -62,12 +81,79 @@ body {
         background-color: $secondary-color;
     }
     .active {
-        background-color: red;
+        background: $gradient;
+    }
+
+}
+
+.options-container {
+    display: grid;
+    width: 90%;
+    max-width: 550px;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    list-style: none;
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+        color: $font-color;
+        border-radius: 8px;
+        background-color: $secondary-color;
+        cursor: pointer;
+        font: {
+            size: 1rem;
+            weight: 600;
+        }
+        &:hover {
+            background: $gradient;
+        }
     }
 }
-.correct {
-    color: pink;
-}
-.incorrect {
-    color: red;
+
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 85vw;
+    max-width: 400px;
+    height: auto;
+    background-color: $primary-color;
+    padding: 2rem 1rem;
+    border-radius: 14px;
+    color: $font-color;
+    p {
+        text-align: center;
+        font: {
+            size: 1.5rem;
+            weight: 400;
+        }
+    }
+    .counter-container {
+        text-align: center;
+        font: {
+            size: 1.25rem;
+            weight: 600;
+        }
+    }
+    button {
+        width: 50%;
+        padding-block: 1rem;
+        border-radius: 8px;
+        border: none;
+        background: $gradient;
+        color: $font-color;
+        font: {
+            size: 1rem;
+            weight: 600;
+        }
+        cursor: pointer;
+    }
 }

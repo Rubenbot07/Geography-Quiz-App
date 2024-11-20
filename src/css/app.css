@@ -18,20 +18,37 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 2rem 1rem;
   border-radius: 14px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 85vw;
-  height: 80%;
+  max-width: 900px;
+  height: auto;
   background-color: #393F6E;
 }
 .main-container h1 {
   color: #8B8EAB;
   font-size: 1rem;
   font-weight: semibold;
+}
+.main-container .question {
+  color: #E2E4F3;
+  text-align: center;
+  max-width: 500px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 
 .question-list-container {
@@ -54,13 +71,69 @@ body {
   background-color: #343964;
 }
 .question-list-container .active {
-  background-color: red;
+  background: linear-gradient(#E65895, #BC6BE8);
 }
 
-.correct {
-  color: pink;
+.options-container {
+  display: grid;
+  width: 90%;
+  max-width: 550px;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  list-style: none;
+}
+.options-container li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  color: #E2E4F3;
+  border-radius: 8px;
+  background-color: #343964;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.options-container li:hover {
+  background: linear-gradient(#E65895, #BC6BE8);
 }
 
-.incorrect {
-  color: red;
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 85vw;
+  max-width: 400px;
+  height: auto;
+  background-color: #393F6E;
+  padding: 2rem 1rem;
+  border-radius: 14px;
+  color: #E2E4F3;
+}
+.modal-container p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.modal-container .counter-container {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.modal-container button {
+  width: 50%;
+  padding-block: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(#E65895, #BC6BE8);
+  color: #E2E4F3;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
 }/*# sourceMappingURL=app.css.map */
