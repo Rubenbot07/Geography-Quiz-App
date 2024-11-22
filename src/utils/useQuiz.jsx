@@ -12,7 +12,7 @@ export const useQuiz = () => {
     counter: 0,
     options: [],
     openModal: false,
-    level: ''
+    level: null
   }
   const [state, dispatch] = useReducer(reducer, initialState)
   
@@ -24,11 +24,10 @@ export const useQuiz = () => {
     currentQuestion,
     counter,
     options,
-    openModal
+    openModal,
+    level
   } = state
   
-
-
   const actionTypes = {
     getData: 'GET_DATA',
     setQuestion: 'SET_QUESTION',
@@ -43,7 +42,7 @@ export const useQuiz = () => {
   function reducer (state, action) {
     switch (action.type) {
       case 'GET_DATA':
-        return { ...state, data: action.payload }
+        return { ...state, data: action.payload.data, level: action.payload.level }
       case 'SET_QUESTION':
         return { ...state, question: action.payload}
       case 'SET_OPTIONS':
@@ -63,15 +62,11 @@ export const useQuiz = () => {
     }
   }
 
-  const getQuestions = async () => {
-    const data = await UseApi()
-    dispatch({type: actionTypes.getData, payload: data}); 
+  const getQuestions = async (level) => {
+    const data = await UseApi(level)
+    dispatch({type: actionTypes.getData, payload: {data: data, level: level}}); 
 }
     
-useEffect(() => {
-    getQuestions()
-  }, []);
-
 
   useEffect(() => {
     if (data.length > 0) {
@@ -99,7 +94,6 @@ useEffect(() => {
       if(currentQuestion < 9) {
         dispatch({type: actionTypes.setCurrentQuestion, payload: {currentQuestion: currentQuestion + 1, itemSelected: ''}})
       } else {
-        console.log(`${counter}/10`)
         dispatch({type: actionTypes.setOpenModal, payload: true})
         confetti()
       }
@@ -107,7 +101,6 @@ useEffect(() => {
   }
   
   const playAgain =  () => {
-    getQuestions()
     dispatch({type: actionTypes.playAgain})
   }
   
@@ -120,7 +113,9 @@ useEffect(() => {
     counter,
     options,
     openModal,
+    level,
     handleAnswer,
     playAgain,
+    getQuestions
   }
 }

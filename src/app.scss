@@ -157,3 +157,44 @@ body {
         cursor: pointer;
     }
 }
+
+.level-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 200px;
+    background-color: $primary-color;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    h2 {
+        text-align: center;
+        color: $font-color;
+        margin-bottom: 1rem;
+        font: {
+            size: 1.25rem;
+            weight: 600;
+        }
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        list-style: none;
+        li {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background-color: $secondary-color;
+            color: $font-color;
+            font: {
+                size: 1rem;
+                weight: 600;
+            }
+            cursor: pointer;
+            &:hover {
+                background: $gradient;
+            }
+        }
+    }
+}
